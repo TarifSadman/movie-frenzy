@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Merriweather");
+
+body {
+  color: $color;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.user-profile {
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+.user-profile__wrapper {
+  position: relative;
+}
+
+.user-profile__background {
+  background: url("https://images.pexels.com/photos/57542/pexels-photo-57542.jpeg?auto=compress&cs=tinysrgb&h=500&w=`960")
+    center center no-repeat;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%);
+  opacity: 0.4;
+  height: 250px;
+}
+
+.user-profile__name {
+  text-align: center;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.user-profile__name > p {
+  color: $color-name;
+  font-size: $font-size-large;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.user-profile__name > span {
+  color: $color-tag;
+  font-size: $font-size-small;
+}
+
+.user-profile__image {
+  background: url("https://images.pexels.com/photos/733252/pexels-photo-733252.png?auto=compress&cs=tinysrgb&h=120&w=120")
+    center center;
+  border-radius: 3em;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  height: 5em;
+  width: 5em;
+  transform: translate(-50%, -50%);
+}
+
+.user-profile__follow {
+  margin-bottom: 20px;
+  position: relative;
+  top: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-profile__follow > p {
+  text-align: center;
+  margin-top: 0;
+}
+
+.user-profile__follow > p > p {
+  margin: 0;
+}
+
+.user-profile__add {
+  background-color: $primary;
+  border-radius: 3em;
+  height: 3em;
+  width: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.user-profile__add > span {
+  color: $color-button;
+  font-size: 2.5em;
+}
+
+.user-posts {
+  max-width: 500px;
+  position: relative;
+  top: -30px;
+}
+
+.user-post {
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.user-post:hover {
+  opacity: 0.7;
+}
+
+.user-post > h1 {
+  color: "black";
+  font-size: $font-size-large;
+}
+
+.profile-header {
+    background-color: #ffffff;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .back-button {
+    font-size: 1.2em;
+    margin-right: 10px;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  

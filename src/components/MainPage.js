@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { UserOutlined, BellFilled, SearchOutlined } from "@ant-design/icons";
-import { NavLink, Link, useParams, Redirect } from "react-router-dom";
+import { NavLink, Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const MainPage = () => {
+  const navigateTo = useNavigate();
   const { category } = useParams();
   const [data, setData] = useState();
   const [genres, setGenres] = useState([]);
@@ -41,7 +42,6 @@ const MainPage = () => {
         setSearchResults([]);
       });
   };
-
 
   const fetchData = url => {
     axios
@@ -104,7 +104,7 @@ const MainPage = () => {
       category !== "discover" &&
       category !== "details")
   ) {
-    return <Redirect to="/discover" />;
+    return <Navigate to="/discover" />;
   }
 
   return (
@@ -149,9 +149,9 @@ const MainPage = () => {
                 <Col xs="4" sm="3">
                   <UserOutlined className="avatar" />
                 </Col>
-                <Col xs="12" sm="5" className="avatar-text ">
-                  <span>Cobynnha Terra</span>
-                  <span>Manage Account</span>
+                <Col xs="12" sm="5" className="avatar-text" onClick={() => navigateTo("/my-profile")}>
+                    <span>Demo User</span>
+                    <span>Manage Account</span>
                 </Col>
               </Row>
               ) : (
@@ -181,118 +181,118 @@ const MainPage = () => {
           <Col className="content-head" sm="12">
             <h2>Recommended for you</h2>
           </Col>
-  {!data && <h2 style={{ marginLeft: "0.8rem" }}>Loading ... </h2>}
-  {searchResults.length > 0 ? (
-    searchResults.map((movie, index) => {
-      let genreList = pickGenre(movie.genre_ids);
-      return (
-        <Col
-          key={index}
-          className="item"
-          xs="12"
-          sm="5"
-          md="3"
-          lg="2"
-        >
-          <Link
-            to={{
-              pathname: "/details",
-              state: {
-                details: movie,
-                genre: genreList,
-                allGenres: genres
-              }
-            }}
-          >
-            <div className="item-content">
-              <img
-                className="item-image"
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt="poster"
-              />
-              <div className="item-details">
-                <span className="item-title">
-                  {movie.title || movie.name}
-                </span>
-                <p className="item-extra">
-                  <span>{`${genreList[0]} . ${new Date(
-                    movie.release_date || movie.first_air_date
-                  ).getFullYear()}`}</span>
-                  <br />
-                  <br />
-                  <span className="other">
-                    {movie.original_language}
-                  </span>
-                </p>
-              </div>
-            </div>
-          </Link>
-        </Col>
-      );
-    })
-  ) : (
-    data &&
-    data.map((movie, index) => {
-      let genreList = pickGenre(movie.genre_ids);
-      return (
-        <Col
-          key={index}
-          onMouseOver={e => {
-            const doc = document.querySelectorAll(".item-extra")[
-              index
-            ];
-            doc.style.display = "block";
-          }}
-          onMouseOut={e => {
-            const doc = document.querySelectorAll(".item-extra")[
-              index
-            ];
-            doc.style.display = "none";
-          }}
-          className="item"
-          xs="12"
-          sm="5"
-          md="3"
-          lg="2"
-        >
-          <Link
-            to={{
-              pathname: "/details",
-              state: {
-                details: movie,
-                genre: genreList,
-                allGenres: genres
-              }
-            }}
-          >
-            <div className="item-content">
-              <img
-                className="item-image"
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt="poster"
-              />
-              <div className="item-details">
-                <span className="item-title">
-                  {movie.title || movie.name}
-                </span>
-                <p className="item-extra">
-                  <span>{`${genreList[0]} . ${new Date(
-                    movie.release_date || movie.first_air_date
-                  ).getFullYear()}`}</span>
-                  <br />
-                  <br />
-                  <span className="other">
-                    {movie.original_language}
-                  </span>
-                </p>
-              </div>
-            </div>
-          </Link>
-        </Col>
-      );
-    })
-  )}
-</Row>
+          {!data && <h2 style={{ marginLeft: "0.8rem" }}>Loading ... </h2>}
+          {searchResults.length > 0 ? (
+            searchResults.map((movie, index) => {
+              let genreList = pickGenre(movie.genre_ids);
+              return (
+                <Col
+                  key={index}
+                  className="item"
+                  xs="12"
+                  sm="5"
+                  md="3"
+                  lg="2"
+                >
+                  <Link
+                    to={{
+                      pathname: "/details",
+                      state: {
+                        details: movie,
+                        genre: genreList,
+                        allGenres: genres
+                      }
+                    }}
+                  >
+                    <div className="item-content">
+                      <img
+                        className="item-image"
+                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                        alt="poster"
+                      />
+                      <div className="item-details">
+                        <span className="item-title">
+                          {movie.title || movie.name}
+                        </span>
+                        <p className="item-extra">
+                          <span>{`${genreList[0]} . ${new Date(
+                            movie.release_date || movie.first_air_date
+                          ).getFullYear()}`}</span>
+                          <br />
+                          <br />
+                          <span className="other">
+                            {movie.original_language}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                </Col>
+              );
+            })
+          ) : (
+            data &&
+            data.map((movie, index) => {
+              let genreList = pickGenre(movie.genre_ids);
+              return (
+                <Col
+                  key={index}
+                  onMouseOver={e => {
+                    const doc = document.querySelectorAll(".item-extra")[
+                      index
+                    ];
+                    doc.style.display = "block";
+                  }}
+                  onMouseOut={e => {
+                    const doc = document.querySelectorAll(".item-extra")[
+                      index
+                    ];
+                    doc.style.display = "none";
+                  }}
+                  className="item"
+                  xs="12"
+                  sm="5"
+                  md="3"
+                  lg="2"
+                >
+                  <Link
+                    to={{
+                      pathname: "/details",
+                      state: {
+                        details: movie,
+                        genre: genreList,
+                        allGenres: genres
+                      }
+                    }}
+                  >
+                    <div className="item-content">
+                      <img
+                        className="item-image"
+                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                        alt="poster"
+                      />
+                      <div className="item-details">
+                        <span className="item-title">
+                          {movie.title || movie.name}
+                        </span>
+                        <p className="item-extra">
+                          <span>{`${genreList[0]} . ${new Date(
+                            movie.release_date || movie.first_air_date
+                          ).getFullYear()}`}</span>
+                          <br />
+                          <br />
+                          <span className="other">
+                            {movie.original_language}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                </Col>
+              );
+            })
+          )}
+        </Row>
 
         </Col>
       </Row>
