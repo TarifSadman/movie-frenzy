@@ -1,0 +1,38 @@
+{
+  "name": "movie-frenxy",
+  "version": "1.0.0",
+  "description": "MFrenxy React Movie Listing App",
+  "keywords": [
+    "react",
+    "movie",
+    "listing"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "@ant-design/icons": "4.0.5",
+    "axios": "^0.19.2",
+    "bootstrap": "4.4.1",
+    "dotenv": "^8.2.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "^5.0.1",
+    "reactstrap": "8.4.1"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0",
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
