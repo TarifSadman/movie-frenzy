@@ -1,19 +1,30 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import DetailsPage from "./components/DetailsPage";
 import MainPage from "./components/MainPage";
+import "./components/styles/globals.scss";
 import Profile from "./components/Profile";
-import "./components/styles/index.scss";
 
 export default function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route exact path="/details" element={<DetailsPage/>} />
-        <Route path="/:category" element={<MainPage />} />
-        <Route path="/" element={<MainPage />} />
-        <Route exact path="/my-profile" element={<Profile />} />
-      </Routes>
+      <Switch>
+        <Route path="/details">
+          <DetailsPage />
+        </Route>
+
+        <Route path="/my-profile">
+        <Profile />
+        </Route>
+
+        <Route path="/:category">
+          <MainPage />
+        </Route>
+
+        <Route path="/">
+          <MainPage />
+        </Route>
+      </Switch>
     </div>
   );
 }

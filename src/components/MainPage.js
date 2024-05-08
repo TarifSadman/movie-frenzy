@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { UserOutlined, BellFilled, SearchOutlined } from "@ant-design/icons";
-import { NavLink, Link, useParams, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, Link, useParams, Redirect } from "react-router-dom";
 import axios from "axios";
 
 const MainPage = () => {
-  const navigateTo = useNavigate();
   const { category } = useParams();
   const [data, setData] = useState();
   const [genres, setGenres] = useState([]);
@@ -42,6 +41,7 @@ const MainPage = () => {
         setSearchResults([]);
       });
   };
+
 
   const fetchData = url => {
     axios
@@ -104,7 +104,7 @@ const MainPage = () => {
       category !== "discover" &&
       category !== "details")
   ) {
-    return <Navigate to="/discover" />;
+    return <Redirect to="/discover" />;
   }
 
   return (
@@ -149,9 +149,11 @@ const MainPage = () => {
                 <Col xs="4" sm="3">
                   <UserOutlined className="avatar" />
                 </Col>
-                <Col xs="12" sm="5" className="avatar-text" onClick={() => navigateTo("/my-profile")}>
-                    <span>Demo User</span>
-                    <span>Manage Account</span>
+                <Col xs="12" sm="5" className="avatar-text">
+                <Link to="/my-profile">
+                  <span>Demo User</span>
+                  <span>Manage Account</span>
+                </Link>
                 </Col>
               </Row>
               ) : (
@@ -293,7 +295,6 @@ const MainPage = () => {
             })
           )}
         </Row>
-
         </Col>
       </Row>
     </Container>

@@ -1,6 +1,6 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const posts = [
   {
@@ -31,14 +31,14 @@ const UserPost = ({ title, content }) => (
 );
 
 const Profile = () => {
-  const navigateTo = useNavigate();
-
   return (
-  <div className="container">
-     <div className="profile-header" onClick={() => navigateTo("/")}>
+    <div className="container">
+     <div className="profile-header">
+     <Link to="/">
       <div className="back-button">
         <ArrowLeftOutlined />
       </div>
+      </Link>
       <h1 className="title">Go Back</h1>
     </div>
       <div className="user-profile">
