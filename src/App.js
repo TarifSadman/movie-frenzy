@@ -4,6 +4,7 @@ import DetailsPage from "./components/DetailsPage";
 import MainPage from "./components/MainPage";
 import "./components/styles/globals.scss";
 import Profile from "./components/Profile";
+import Register from "./components/Register";
 
 export default function App() {
   return (
@@ -21,8 +22,12 @@ export default function App() {
           <MainPage />
         </Route>
 
-        <Route path="/">
+        <Route path="/movies">
           <MainPage />
+        </Route>
+
+        <Route path="/">
+          <Register />
         </Route>
       </Switch>
     </div>

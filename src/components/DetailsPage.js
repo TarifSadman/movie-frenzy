@@ -130,7 +130,7 @@ const DetailsPage = () => {
       <Row>
         <Col className="image-view" sm="4" md="3">
             <Col className="details-header">
-              <Link className="back" to="/">
+              <Link className="back" to="/movies">
                 <span>
                   <ArrowLeftOutlined
                     className="pr-3"

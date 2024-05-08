@@ -1,71 +1,84 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Col, Row } from 'reactstrap'; //
 
-const posts = [
+const favoriteMovies = [
   {
     id: 1,
-    title: "Lorem ipsum dolor sit amet",
-    content:
-      "Duis nec auctor diam. Aliquam hendrerit sodales risus, sed elementum diam laoreet ac. Sed a nisi sed nunc viverra bibendum. Cras sed leo in sem finibus varius. Cras ut convallis ex. Nullam sit..."
+    title: "Inception",
+    genreList: ["Action", "Adventure", "Sci-Fi"],
+    releaseDate: "2010-07-16",
+    originalLanguage: "English",
+    poster_path: "/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
   },
   {
     id: 2,
-    title: "Cras nec fringilla urna",
-    content:
-      "Quisque erat odio, vehicula non diam eu, aliquam porttitor justo. Maecenas porta, arcu non vestibulum scelerisque, dui urna interdum ante, ut rutrum dolor odio eget velit. Fusce tempor..."
+    title: "The Shawshank Redemption",
+    genreList: ["Drama"],
+    releaseDate: "1994-09-23",
+    originalLanguage: "English",
+    poster_path: "/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
   },
   {
     id: 3,
-    title: "Suspendisse",
-    content:
-      "Suspendisse tempus dignissim dapibus. In ut euismod orci. Ut cursus dictum ante quis facilisis. Etiam pharetra nulla non ultrices ultrices. Maecenas vulputate risus at diam bibendum..."
+    title: "The Dark Knight",
+    genreList: ["Action", "Crime", "Drama"],
+    releaseDate: "2008-07-18",
+    originalLanguage: "English",
+    poster_path: "/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
   }
 ];
 
-const UserPost = ({ title, content }) => (
-  <div className="user-post">
-    <h1 className="user-post__header">{title}</h1>
-    <div className="user-post__content">{content}</div>
-  </div>
-);
+const MovieCard = ({ movie }) => {
+  return (
+    <div className="movie-card">
+      <img
+        className="movie-poster"
+        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+        alt="Movie Poster"
+      />
+      <div className="movie-info">
+        <h2 className="movie-title">{movie.title}</h2>
+        <p className="movie-details">{`${movie.genreList[0]} . ${new Date(
+          movie.releaseDate
+        ).getFullYear()}`}</p>
+        <p className="movie-details">
+          <span className="movie-language">{movie.originalLanguage}</span>
+        </p>
+      </div>
+    </div>
+  );
+};
 
 const Profile = () => {
   return (
     <div className="container">
-     <div className="profile-header">
-     <Link to="/">
-      <div className="back-button">
-        <ArrowLeftOutlined />
+      <div className="profile-header">
+        <Link to="/movies">
+          <div className="back-button">
+            <ArrowLeftOutlined />
+          </div>
+        </Link>
+        <h1 className="title">Go Back</h1>
       </div>
-      </Link>
-      <h1 className="title">Go Back</h1>
-    </div>
       <div className="user-profile">
         <div className="user-profile__wrapper">
           <div className="user-profile__background" />
           <div className="user-profile__name">
-            <p>Alice Wonderland</p>
+            <p>Demo User</p>
             <span>Aliquam ornare augue ac nulla</span>
           </div>
           <div className="user-profile__image" />
         </div>
-        <div className="user-profile__follow">
-          <p>
-            0 <p>Following</p>
-          </p>
-          <div className="user-profile__add">
-            <span>+</span>
-          </div>
-          <p>
-            1 <p>Follower</p>
-          </p>
-        </div>
       </div>
       <div className="user-posts">
-        {posts.map(post => (
-          <UserPost key={post.id} title={post.title} content={post.content} />
-        ))}
+        <h2 style={{ textAlign: "center" }}>Favorites</h2>
+        <Row>
+          {favoriteMovies.map(movie => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </Row>
       </div>
     </div>
 )
