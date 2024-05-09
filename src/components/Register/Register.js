@@ -7,9 +7,7 @@ const Register = () => {
   const [error, setError] = useState("");
   const history = useHistory();
 
-  // Function to generate a simple token
   const generateToken = () => {
-    // Generate a random string
     const randomString = Math.random().toString(36).substr(2);
     return randomString;
   };

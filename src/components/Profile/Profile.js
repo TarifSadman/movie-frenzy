@@ -84,7 +84,7 @@ const Profile = () => {
                     <span className="movie-language">{movie.originalLanguage}</span>
                   </p>
                 </div>
-                <button className="remove-button" onClick={() => handleRemoveMovie(movie.id)}>Remove</button>
+                <button onClick={() => handleRemoveMovie(movie.id)}>Remove</button>
               </div>
             </Col>
           ))}
