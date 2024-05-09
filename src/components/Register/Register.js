@@ -51,16 +51,14 @@ const Register = () => {
     const token = localStorage.getItem("token");
   
     if (token) {
-      const timeoutId = setTimeout(() => {
+      setTimeout(() => {
         localStorage.removeItem("userData");
-        localStorage.removeItem("favoriteMovies");
         localStorage.removeItem("token");
+        localStorage.removeItem("favoriteMovies");
         history.push("/");
       }, 10 * 60 * 1000);
-        return () => clearTimeout(timeoutId);
     }
   }, [history]);
-  
   
   
 
