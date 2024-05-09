@@ -37,10 +37,8 @@ const DetailsPage = () => {
     const isFavorite = favoriteMovies.some(movie => movie.id === id);
     let updatedFavorites;
     if (isFavorite) {
-      // Remove from favorites
       updatedFavorites = favoriteMovies.filter(movie => movie.id !== id);
     } else {
-      // Add to favorites
       updatedFavorites = [...favoriteMovies, details];
     }
     localStorage.setItem("favoriteMovies", JSON.stringify(updatedFavorites));

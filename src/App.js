@@ -1,10 +1,10 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import DetailsPage from "./components/DetailsPage";
-import MainPage from "./components/MainPage";
+import MainPage from "./components/MainPage/MainPage";
 import "./components/styles/globals.scss";
-import Profile from "./components/Profile";
-import Register from "./components/Register";
+import Profile from "./components/Profile/Profile";
+import Register from "./components/Register/Register";
 
 export default function App() {
   return (

@@ -11,6 +11,21 @@ const MainPage = () => {
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const storedUserDataString = localStorage.getItem("userData");
+    if (storedUserDataString !== null) {
+      try {
+        const storedUserData = JSON.parse(storedUserDataString);
+        setUserData(storedUserData);
+        console.log("Stored User Data:", storedUserData);
+      } catch (error) {
+        console.error("Error parsing stored user data:", error);
+      }
+    }
+  }
+  , []);
 
   const toggleSearch = () => {
     setSearchVisible(!searchVisible);
@@ -151,7 +166,7 @@ const MainPage = () => {
                 </Col>
                 <Col xs="12" sm="5" className="avatar-text">
                 <Link to="/my-profile">
-                  <span>Demo User</span>
+                  <span>{userData ? userData?.username : "Demo User"}</span>
                   <span>Manage Account</span>
                 </Link>
                 </Col>
